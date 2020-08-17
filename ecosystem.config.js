@@ -1,19 +1,30 @@
 module.exports = {
   apps : [{
     name: 'realworld',
-    script: 'index.js',
-    watch: '.'
+    script: 'npm -- run start',
+    watch: true,
+    env: {
+        "PORT": 3000,
+        "NODE_ENV": "development"
+    },
+    env_staging: {
+        "PORT": 8070,
+        "NODE_ENV": "production",
+    },
+    env_production: {
+        "PORT": 8080,
+        "NODE_ENV": "production",
+    }
   }],
-
   deploy : {
     production : {
-      user : 'SSH_USERNAME',
-      host : 'SSH_HOSTMACHINE',
+      user : 'root',
+      host : '119.45.51.253',
       ref  : 'origin/master',
-      repo : 'GIT_REPOSITORY',
-      path : 'DESTINATION_PATH',
+      repo : 'https://gitee.com/xiaozhij/fed-e-task-03-03.git',
+      path : '/home/nuxt-realworld-prod',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
   }
