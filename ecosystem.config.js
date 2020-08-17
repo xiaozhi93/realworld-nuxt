@@ -23,9 +23,13 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'https://gitee.com/xiaozhij/fed-e-task-03-03.git',
       path : '/home/nuxt-realworld-staging',
-      "pre-setup" : "echo '开始clone项目到目标路径中。然后启动项目'",
+      "env":{
+        "NODE_ENV":"production"
+      },
+      'pre-setup': 'rm -rf /home/nuxt-realworld-staging/source',
       "post-setup": "npm install && npm run build && pm2 start ecosystem.config.js --env production",
       "pre-deploy-local": "echo '开始fetch项目然后重启应用'",
+      "pre-deploy": "pm2 --version",
       'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
     }
   }
