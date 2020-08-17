@@ -69,5 +69,9 @@ module.exports = {
     plugins: [
         '~/plugins/request.js',
         '~/plugins/filters.js'
-    ]
+    ],
+    server: {
+        host: '0.0.0.0',
+        port: '80'
+    }
 }
