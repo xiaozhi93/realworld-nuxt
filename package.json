@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "deploy": "pm2 reload ecosystem.config.js --env production"
+    "start": "nuxt start"
   },
   "homepage": "http://119.45.51.253/",
   "keywords": [],
