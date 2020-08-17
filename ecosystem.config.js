@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name: 'realworld-' + process.env.NODE_ENV,
+    name: 'realworld',
     script: 'npm -- run start',
     watch: true,
     env: {
@@ -27,7 +27,7 @@ module.exports = {
         "NODE_ENV":"development"
       },
       'pre-setup': 'rm -rf /home/nuxt-realworld-development/source',
-      "post-setup": "npm install && npm run build && pm2 start ecosystem.config.js --env development",
+      "post-setup": "npm install && npm run build && pm2 start ecosystem.config.js --name realworld-development --env development",
       "pre-deploy": "echo '开始fetch项目然后重启应用'",
       'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --env development',
     },
@@ -41,7 +41,7 @@ module.exports = {
         "NODE_ENV":"production"
       },
       'pre-setup': 'rm -rf /home/nuxt-realworld-staging/source',
-      "post-setup": "npm install && npm run build && pm2 start ecosystem.config.js --env production",
+      "post-setup": "npm install && npm run build && pm2 start ecosystem.config.js --name realworld-production  --env production",
       "pre-deploy-local": "echo '开始fetch项目然后重启应用'",
       "pre-deploy": "pm2 --version",
       'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
