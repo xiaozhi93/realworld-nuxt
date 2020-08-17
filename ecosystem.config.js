@@ -24,7 +24,7 @@ module.exports = {
       repo : 'https://gitee.com/xiaozhij/fed-e-task-03-03.git',
       path : '/home/nuxt-realworld-prod',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'npm install && npm run build && npm run deploy',
       'pre-setup': ''
     }
   }
